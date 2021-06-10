@@ -14,12 +14,15 @@ public class Author {
     private String firstName;
     private String lastName;
 
-    // To initialize books with a nw hashset,
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 
-
     public Author() {
+    }
+
+    public Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Long getId() {
@@ -30,26 +33,21 @@ public class Author {
         this.id = id;
     }
 
-    public Author(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public String getFirstName() {
+        return firstName;
     }
 
-//    public String getFirstName() {
-//        return firstName;
-//    }
-//
-//    public void setFirstName(String firstName) {
-//        this.firstName = firstName;
-//    }
-//
-//    public String getLastName() {
-//        return lastName;
-//    }
-//
-//    public void setLastName(String lastName) {
-//        this.lastName = lastName;
-//    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public Set<Book> getBooks() {
         return books;
@@ -65,7 +63,6 @@ public class Author {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", books=" + books +
                 '}';
     }
 
@@ -82,5 +79,6 @@ public class Author {
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
+
     }
 }
